@@ -1,5 +1,5 @@
 # ---- 构建阶段 ----
-FROM node:20-alpine AS builder
+FROM node:22-alpine AS builder
 WORKDIR /app
 
 # 启用 pnpm
@@ -16,7 +16,7 @@ COPY . .
 RUN pnpm run build
 
 # ---- 运行阶段 ----
-FROM node:20-alpine AS runner
+FROM node:22-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production

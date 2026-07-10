@@ -1,6 +1,11 @@
 {
   "build": {
-    "builder": "NIXPACKS"
+    "builder": "NIXPACKS",
+    "nixpacksPlan": {
+      "providers": ["node"],
+      "buildImage": "node:22-alpine"
+    },
+    "buildCommand": "npm ci && npm run build"
   },
   "deploy": {
     "startCommand": "node server.js",
