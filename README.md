@@ -8,6 +8,8 @@
 [![React](https://img.shields.io/badge/React-19-61dafb)](https://react.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38bdf8)](https://tailwindcss.com/)
 
+![Demo](docs/demo.gif)
+
 ## ✨ 功能
 
 - 📄 **PDF 简历上传** — 拖拽或点击上传，支持文字型 PDF 解析
