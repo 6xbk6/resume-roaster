@@ -74,8 +74,8 @@ function parseAIResponse(content: string): RoastResult {
 
     return parsed;
   } catch (e) {
-    console.error("Failed to parse AI response:", e);
-    console.error("Raw content:", content);
+    console.error("Failed to parse AI response:", (e as Error).message);
+    console.error("Content length:", content.length);
     throw new Error("AI 返回格式异常，请重试");
   }
 }
