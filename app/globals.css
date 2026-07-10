@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+/* 自定义基础样式 */
+@theme inline {
+  --color-background: #030712;
+  --color-foreground: #f9fafb;
+  --font-sans: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Cascadia Code", "Fira Code", "JetBrains Mono", Consolas, monospace;
+}
+
+/* 全局样式 */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #374151 transparent;
+}
+
+/* 性能优化：避免不必要的重绘 */
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 离屏内容延迟渲染 */
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}
+
+/* 首屏内容立即渲染 */
+section:first-of-type {
+  content-visibility: visible;
+  contain-intrinsic-size: none;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #374151;
+  border-radius: 3px;
+}
+
+/* 选中文本颜色 */
+::selection {
+  background: rgba(168, 85, 247, 0.3);
+  color: #fff;
+}
+
+/* 动画 */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(168, 85, 247, 0.4); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* 渐变文字 */
+.text-gradient {
+  background: linear-gradient(135deg, #a855f7, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 3D 透视 */
+.perspective-3d {
+  perspective: 1200px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* 3D 浮动几何体 */
+@keyframes float-3d {
+  0%, 100% {
+    transform: translateY(0) translateZ(0) rotateX(0deg) rotateY(0deg);
+  }
+  25% {
+    transform: translateY(-20px) translateZ(30px) rotateX(5deg) rotateY(10deg);
+  }
+  50% {
+    transform: translateY(-10px) translateZ(50px) rotateX(-3deg) rotateY(-5deg);
+  }
+  75% {
+    transform: translateY(-30px) translateZ(20px) rotateX(8deg) rotateY(-8deg);
+  }
+}
+
+.animate-float-3d {
+  animation: float-3d 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes spin-slow {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+  will-change: transform;
+}
+
+/* 背景光晕 */
+.bg-glow {
+  position: relative;
+}
+
+.bg-glow::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(168, 85, 247, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* 3D 卡片阴影 */
+.shadow-3d {
+  box-shadow:
+    0 0 0 1px rgba(168, 85, 247, 0.1),
+    0 4px 6px -1px rgba(0, 0, 0, 0.3),
+    0 10px 30px -5px rgba(168, 85, 247, 0.15);
+}
+
+/* 渐变边框动效 */
+@keyframes border-glow {
+  0%, 100% { border-color: rgba(168, 85, 247, 0.3); }
+  50% { border-color: rgba(168, 85, 247, 0.6); }
+}
+
+.animate-border-glow {
+  animation: border-glow 2s ease-in-out infinite;
+}
