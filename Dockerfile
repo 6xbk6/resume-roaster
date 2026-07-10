@@ -1,22 +1,19 @@
 # ---- 构建阶段 ----
-FROM node:22-alpine AS builder
+FROM node:20-alpine AS builder
 WORKDIR /app
 
-# 启用 pnpm
-RUN corepack enable
-
 # 安装构建依赖
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
+COPY package.json package-lock.json ./
+RUN npm ci
 
 # 复制源码
 COPY . .
 
 # 构建生产版本
-RUN pnpm run build
+RUN npm run build
 
 # ---- 运行阶段 ----
-FROM node:22-alpine AS runner
+FROM node:20-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
