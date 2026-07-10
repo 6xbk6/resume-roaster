@@ -49,3 +49,6 @@ test-resume.pdf
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# pnpm (project uses npm)
+pnpm-lock.yaml
